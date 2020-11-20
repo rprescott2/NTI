@@ -90,7 +90,7 @@ class Settings(models.Model):
 
 
 class MeteoData(models.Model):
-    created = models.DateField(default=timezone.now)
+    created = models.DateTimeField(default=timezone.now)
     prectot = models.DecimalField(verbose_name='Кол-во осадков', max_digits=10, decimal_places=4)
     qv2m = models.DecimalField(verbose_name='Влажность', max_digits=10, decimal_places=4)
     ps = models.DecimalField(verbose_name='Давление', max_digits=10, decimal_places=4)
