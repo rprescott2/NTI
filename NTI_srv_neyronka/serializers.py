@@ -66,7 +66,7 @@ class BuildingDetailSerializer(serializers.ModelSerializer):
 class MeteoDataListSerializer(serializers.ModelSerializer):
     class Meta:
         model = neyron_models.MeteoData
-        fields = ['created', 'prectot', 'qv2m', 'ps', 't2m']
+        fields = ['id','created', 'prectot', 'qv2m', 'ps', 't2m']
 
 
 class MeteoDataDetailSerializer(serializers.ModelSerializer):
@@ -77,7 +77,7 @@ class MeteoDataDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = neyron_models.MeteoData
-        fields = ['created', 'prectot', 'qv2m', 'ps', 't2m']
+        fields = ['id', 'created', 'prectot', 'qv2m', 'ps', 't2m']
 
     def create(self, validated_data):
         return super(MeteoDataDetailSerializer, self).create(validated_data)
