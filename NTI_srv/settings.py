@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'corsheaders',
     'django.contrib.staticfiles',
-    'NTI_srv_neyronka'
+    'NTI_srv_neyronka',
 
 ]
 

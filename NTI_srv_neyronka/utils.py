@@ -5,11 +5,11 @@ from tensorflow.python.keras.models import Model, load_model
 import pandas as pd
 import numpy as np
 
-# settings = neyron_model.Settings.objects.get(name='actual')
-# mean = np.array(settings.mean.replace('[', '').replace(']', '').split(',')[0:-1]).astype(float).reshape(1,-1)
-# std = np.array(settings.std.replace('[', '').replace(']', '').split(',')[0:-1]).astype(float).reshape(1,-1)
-# min_y = float(settings.min_y)
-# max_y = float(settings.max_y)
+settings = neyron_model.Settings.objects.filter(name='actual').first()
+mean = np.array(settings.mean.replace('[', '').replace(']', '').split(',')[0:-1]).astype(float).reshape(1,-1) if settings else None
+std = np.array(settings.std.replace('[', '').replace(']', '').split(',')[0:-1]).astype(float).reshape(1,-1) if settings else None
+min_y = float(settings.min_y) if settings else None
+max_y = float(settings.max_y) if settings else None
 
 
 def norm_wind(x, mean, std):

@@ -1,15 +1,9 @@
-from decimal import Decimal
-
 from django.http import HttpResponse
-from rest_framework import views, status
+from rest_framework import status
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
-from sklearn.preprocessing import MinMaxScaler
-from NTI_srv_neyronka import models
+from NTI_srv_neyronka import models, utils
 import math
-
-from NTI_srv import utils
 
 from .serializers import *
 from NTI_srv_neyronka import models as neyron_model
