@@ -66,7 +66,7 @@ class BuildingDetailSerializer(serializers.ModelSerializer):
 class MeteoDataListSerializer(serializers.ModelSerializer):
     class Meta:
         model = neyron_models.MeteoData
-        fields = ['id','created', 'prectot', 'qv2m', 'ps', 't2m']
+        fields = ['id', 'created', 'prectot', 'qv2m', 'ps', 't2m']
 
 
 class MeteoDataDetailSerializer(serializers.ModelSerializer):
