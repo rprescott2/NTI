@@ -25,7 +25,7 @@ SECRET_KEY = 'l1s0wf0wnk2er3qr!k*29y-r0g(hi844jay(0j)9@_&&1ban4_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.31.63.46', '172.20.43.106', '172.31.63.30']
+ALLOWED_HOSTS = ['172.31.63.46', '172.20.43.106', '172.31.63.30', '172.20.44.93', '127.0.0.1']
 
 
 # Application definition
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'corsheaders',
     'django.contrib.staticfiles',
-    'NTI_srv_neyronka',
+    'NTI_srv_neyronka'
 
 ]
 
@@ -90,9 +90,9 @@ WSGI_APPLICATION = 'NTI_srv.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': "nticamp",
-        'USER': "nticamp",
-        'PASSWORD': "123",
+        'NAME': "nti_db",
+        'USER': "nti",
+        'PASSWORD': "",
         'HOST': 'localhost',
         'PORT': '5432',
         'CONN_MAX_AGE': 0,

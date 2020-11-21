@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 from django.utils import timezone
 
 
@@ -91,11 +93,28 @@ class Settings(models.Model):
 
 class MeteoData(models.Model):
     created = models.DateTimeField(default=timezone.now)
-    prectot = models.DecimalField(verbose_name='Кол-во осадков', max_digits=10, decimal_places=4)
-    qv2m = models.DecimalField(verbose_name='Влажность', max_digits=10, decimal_places=4)
-    ps = models.DecimalField(verbose_name='Давление', max_digits=10, decimal_places=4)
-    t2m = models.DecimalField(verbose_name='Температура', max_digits=10, decimal_places=4)
+    prectot = models.DecimalField(verbose_name='Кол-во осадков', max_digits=16, decimal_places=8)
+    qv2m = models.DecimalField(verbose_name='Влажность', max_digits=16, decimal_places=8)
+    ps = models.DecimalField(verbose_name='Давление', max_digits=16, decimal_places=8)
+    t2m = models.DecimalField(verbose_name='Температура', max_digits=16, decimal_places=8)
 
     class Meta:
         verbose_name = 'Метеоданные'
         verbose_name_plural = 'Метеоданные'
+
+
+class ActualData(models.Model):
+    created = models.DateTimeField(default=timezone.now)
+    prectot = models.DecimalField(verbose_name='Кол-во осадков', max_digits=16, decimal_places=8)
+    qv2m = models.DecimalField(verbose_name='Влажность', max_digits=16, decimal_places=8)
+    ps = models.DecimalField(verbose_name='Давление', max_digits=16, decimal_places=8)
+    t2m = models.DecimalField(verbose_name='Температура', max_digits=16, decimal_places=8)
+
+    class Meta:
+        verbose_name = 'Актуальные данные'
+        verbose_name_plural = 'Актуальные данные'
+
+
+@receiver(pre_save, sender=ActualData)
+def ActualData_pre_save(sender, instance=None, **kwargs):
+    ActualData.objects.all().delete()

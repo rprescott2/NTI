@@ -24,6 +24,19 @@ class MeteoDataViewSet(viewsets.ModelViewSet):
         return qs
 
 
+class ActualDataViewSet(viewsets.ModelViewSet):
+
+    def get_serializer_class(self):
+        if hasattr(self, 'action'):
+            if self.action == 'list':
+                return ActualDataListSerializer
+        return ActualDataDetailSerializer
+
+    def get_queryset(self):
+        qs = neyron_model.ActualData.objects.all()
+        return qs
+
+
 class WindTurbineViewSet(viewsets.ModelViewSet):
 
     def get_serializer_class(self):

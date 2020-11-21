@@ -84,3 +84,26 @@ class MeteoDataDetailSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         return super(MeteoDataDetailSerializer, self).update(instance, validated_data)
+
+
+class ActualDataListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = neyron_models.ActualData
+        fields = ['id', 'created', 'prectot', 'qv2m', 'ps', 't2m']
+
+
+class ActualDataDetailSerializer(serializers.ModelSerializer):
+    created = serializers.SerializerMethodField(read_only=True)
+
+    def get_created(self, data):
+        return data.created
+
+    class Meta:
+        model = neyron_models.ActualData
+        fields = ['id', 'created', 'prectot', 'qv2m', 'ps', 't2m']
+
+    def create(self, validated_data):
+        return super(ActualDataDetailSerializer, self).create(validated_data)
+
+    def update(self, instance, validated_data):
+        return super(ActualDataDetailSerializer, self).update(instance, validated_data)

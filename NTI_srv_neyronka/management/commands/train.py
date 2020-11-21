@@ -72,8 +72,8 @@ def run_model_on_test_set(model, df, X_test, y_test, Target_scaler):
     y_hat = pd.DataFrame(y_pred_rescaled, columns=['Predicted'])
     y_hat.set_index(df.index[int(np.floor((1 - test_set_size) * len(df))):], inplace=True)
 
-    # y_hat = stattools.acf(y_hat, unbiased=True, nlags=1000)
-    # y_actual = stattools.acf(y_actual, unbiased=True, nlags=1000)
+    y_hat = stattools.acf(y_hat, unbiased=True, nlags=1000)
+    y_actual = stattools.acf(y_actual, unbiased=True, nlags=1000)
 
 
     plt.figure(figsize=(7, 5))
@@ -132,4 +132,4 @@ class Command(BaseCommand):
                             verbose=True, validation_data=(x_valid, y_valid))
 
         run_model_on_test_set(model, dataframe, x_test, y_test, Target_scaler)
-        model.save('model1.h5')
+        model.save('model100.h5')

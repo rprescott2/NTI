@@ -20,6 +20,7 @@ dict_router = DefaultRouter()
 router.register(r'wind-turbine', views.WindTurbineViewSet, 'wind-turbine')
 router.register(r'solar-panel', views.SolarPanelViewSet, 'solar-panel')
 router.register(r'data', views.MeteoDataViewSet, 'data')
+router.register(r'actual_data', views.ActualDataViewSet, 'actial-data')
 dict_router.register(r'building-type', views.BuildingTypeViewSet, 'building-type')
 dict_router.register(r'building', views.BuildingViewSet, 'building')
 
