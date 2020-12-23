@@ -86,15 +86,14 @@ class BuildingViewSet(viewsets.ModelViewSet):
 
 class Predicttion(APIView):
     def get(self, request, *args, **kwargs):
-        data_for_predict = np.array([self.request.query_params.get('prectot'),
+        if self.request.query_params.get('df'):
+            pass
+        else:
+            data_for_predict = np.array([self.request.query_params.get('prectot'),
                                      self.request.query_params.get('qv2m'),
                                      self.request.query_params.get('ps'),
                                      self.request.query_params.get('t2m')]
-                                    ).astype(float).reshape(1, -1) if not self.request.query_params.get('file') else self.request.query_params.get('file')
-        if not type(data_for_predict) == np.ndarray:
-            data_for_predict = pd.read_csv(data_for_predict)
-            data_for_predict.drop(columns=['LAT', 'LON', 'DY', 'YEAR', 'MO', 'WS50M', 'ALLSKY_SFC_SW_DWN'], inplace=True)
-
+                                    ).astype(float).reshape(1, -1)
         Feature_scaler, Target_scaler = utils.scales()
         packed_allsky = utils.pack_allsky(data_for_predict, Feature_scaler)
         allsky = utils.allsky_predict(packed_allsky, Target_scaler)
@@ -113,4 +112,4 @@ class Predicttion(APIView):
                 turbine_Kw += 0.5 * math.pi * float(turbine.Q) * (float(turbine.diameter) ** 2) * (wind[i] ** 3) * float(
                     turbine.efficiency) * float(turbine.Ng) / 1000
                 solar_KW += allsky[i] * float(solar.Ko) * float(solar.power) * float(solar.efficiency) / float(solar.U)
-        return HttpResponse('solar_KW:  {} \nwind_KW:   {} \nallsky   {}\nwind:    {}'.format(solar_KW,turbine_Kw, allsky, wind), status=status.HTTP_200_OK)
+        return HttpResponse('solar_KW:{},wind_KW:{},allsky:{},wind:{}'.format(solar_KW,turbine_Kw, allsky, wind), status=status.HTTP_200_OK)

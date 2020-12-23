@@ -11,7 +11,7 @@ from itertools import zip_longest
 import matplotlib.pyplot as plt
 
 
-test_set_size = 0.9
+test_set_size = 0.1
 
 
 def train_test_valid_split_plus_scaling(df, valid_set_size, test_set_size):
@@ -46,12 +46,12 @@ def run_model_on_test_set(model, df, X_test, y_test, max_y, min_y):
 
     y_hat = pd.DataFrame(y_pred, columns=['Predicted'])
 
-    y_hat = stattools.acf(y_hat, unbiased=True, nlags=1000)
+    # y_hat = stattools.acf(y_hat, unbiased=True, nlags=1000)
     y_actual = stattools.acf(y_test, unbiased=True, nlags=1000)
 
-    plt.subplot(2, 1, 1)
-    plt.plot(y_actual, linestyle='solid', color='r')  # plotting only a few values for better visibility
-    plt.subplot(2, 1, 2)
+    # plt.subplot(2, 1, 1)
+    # plt.plot(y_actual, linestyle='solid', color='r')  # plotting only a few values for better visibility
+    # plt.subplot(2, 1, 2)
     plt.plot(y_hat, linestyle='dashed', color='b')
     plt.show()
 

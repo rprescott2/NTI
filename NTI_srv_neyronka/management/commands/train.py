@@ -77,8 +77,8 @@ def run_model_on_test_set(model, df, X_test, y_test, Target_scaler):
 
 
     plt.figure(figsize=(7, 5))
-    plt.plot(y_actual, linestyle='solid', color='r')
-    plt.plot(y_hat, linestyle='dashed', color='b')
+    # plt.plot(y_actual+1, linestyle='solid', color='r')
+    plt.plot(y_hat+1, linestyle='dashed', color='b')
     plt.show()
 
 class Command(BaseCommand):

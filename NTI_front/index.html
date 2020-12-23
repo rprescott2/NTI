@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src='main.js' defer></script>
+    <title>T&P</title>
+  </head>
+  <body>
+    <form name="house_type" action="" method="post">
+        <input name="link" type="hidden" value="index.php" />
+        влажность: <br />
+        <input id="humidity" type="number" placeholder="Влажность"/> <br />
+        давление: <br />
+        <input id="pressure" type="number" placeholder="Давление" /> <br />
+        температура: <br />
+        <input id="temperature" type="number" placeholder="Температура"/> <br />
+        количество осадков: <br />
+        <input id="rainfall" type="number" placeholder="Кол-во осадков"/> <br />
+
+        <input type="radio" name="building" value="building" checked="checked" />здание<br />
+        <input type="radio" name="house" value="house" />личный дом<br />
+
+        <p><input name="send_req" type="button" id="send_req" value="Отправить" /></p>
+    </form>
+    <input id="filepath" type="String" placeholder='Путь к файлу'/>
+    <ul name="test" value="test"></ul>
+    <ul name="building_type" value="building_type"></ul>
+    <ul name="new" value="new"></ul>
+    <input id='load_file' type="file" Файл>
+    <select id='solar'>
+      <option>Нет</option>
+    </select>
+    <select id='turbine'>
+      <option>Нет</option>
+    </select>
+    <select id='building_type'>
+      <option>Нет</option>
+    </select>
+    <select id='building'>
+      <option>Нет</option>
+    </select>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src='main.js' defer></script>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <title>T&P</title>
+</head>
+
+<body>
+    <div id='main_div'>
+        <div id='white_window'>
+            <div id='result'>
+            <p id='wind'></p>
+            <p id='allsky'></p>
+            <p id='kw_solar'></p>
+            <p id='kw_wind'></p>
+            </div>
+            <input id="humidity" type="number" placeholder="Влажность" />
+            <input id="pressure" type="number" placeholder="Давление"/>
+            <input id="temperature" type="number" placeholder="Температура"/>
+            <input id="rainfall" type="number" placeholder="Кол-во осадков"/>
+            <input id="date_from" type="date" placeholder="Период от">
+            <input id="date_until" type="date" placeholder="Период до">
+            <select id='solar'>
+                <option>Солнечная панель</option>
+            </select>
+            <select id='turbine'>
+                <option>Ветряк</option>
+            </select>
+            <input name="send_req" type="button" id="send_req" value="Отправить" />
+
+        </div>
+    </div>
+</body>
+
+</html>
